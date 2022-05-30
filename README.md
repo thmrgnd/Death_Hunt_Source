@@ -1,6 +1,6 @@
 # Death_Hunt_Source_Code
  
-Music Removed From Source. To Download the assets i used go to these links:
+Music Removed From Source. To Download the assets I used go to these links:
 
 timbeek.com - Main Theme Music
 audionautix.com - Endgame Theme Music
