@@ -53,21 +53,20 @@ public class Cannon : Item
 
     public override void UseItem()
     {
+        if (canTimeTravel && !timeTraveledOnce && playerInteraction.GetCurrentItemInInventory().CompareTag("Cannon"))
+        {
+            timeTraveledOnce = true;
+            audioSource.PlayOneShot(timeTravelSound, timeTravelSoundVolume);
+            playerInteraction.gameObject.GetComponent<PlayerRespawn>().ResetPlayerLocation(timeTravelSpawn);
+            playerInteraction.gameObject.GetComponent<PlayerMovement>().SetCanMove();
+            FindObjectOfType<ThemeMusicManager>().StopMusic();
+            Invoke("TimeTravel", 5f);
+            return;
+        }
+
         Item inRange = playerInteraction.GetCurrentItemInRange();
         if (inRange != null)
         {
-            if (canTimeTravel && !timeTraveledOnce)
-            {
-                timeTraveledOnce = true;
-                audioSource.PlayOneShot(timeTravelSound, timeTravelSoundVolume);
-                playerInteraction.gameObject.GetComponent<PlayerRespawn>().ResetPlayerLocation(timeTravelSpawn);
-                playerInteraction.gameObject.GetComponent<PlayerMovement>().SetCanMove();
-                FindObjectOfType<ThemeMusicManager>().StopMusic();
-                Invoke("TimeTravel", 5f);
-                return;
-            }
-
-
             if (inRange.CompareTag("Death"))
             {
                 if (isUpgraded)
@@ -142,7 +141,7 @@ public class Cannon : Item
             }
         }
 
-       
+
 
 
     }

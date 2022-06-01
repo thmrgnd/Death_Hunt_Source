@@ -39,7 +39,7 @@ public class PlayerInteraction : MonoBehaviour
             if (currentItemInInventory.CompareTag("Honey"))
             {
                 currentItemInInventory.GetComponent<Honey>().ResetHoney();
-                FindObjectOfType<PlayerInteraction>().RemoveItemFromInventory();
+                RemoveItemFromInventory();
             }
             else
                 currentItemInInventory.PutDownItem();

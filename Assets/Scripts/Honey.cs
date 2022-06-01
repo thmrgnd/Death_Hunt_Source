@@ -86,6 +86,7 @@ public class Honey : Item
         if (timesEatenHoney >= timesToDieFromEatingHoney)
         {
             deathManager.SetDiedOfHoney();
+            playerInteraction.RemoveItemFromInventory();
         }
         else if (timesEatenHoney < timesToDieFromEatingHoney)
         {
